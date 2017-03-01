@@ -17,14 +17,13 @@ public class CF01 {
         SlowClient sc = new SlowClient();
         StopWatch sw = new StopWatch();
         sw.start();
-        CompletableFuture<Integer> loadFromDB = supplyAsync(() -> sc.getSlow(1000));
-
-                thenCombine(supplyAsync(() ->sc.getSlow(1000)), (s1, s2) -> s1+s2);
-        cf1.thenAccept(out::println);
+        CompletableFuture<Integer> loadFromDB = supplyAsync(() -> sc.getSlow(1000)).
+        thenCombine(supplyAsync(() ->sc.getSlow(1000)), (s1, s2) -> s1+s2);
+        loadFromDB.thenAccept(out::println);
         sc.getSlow(1000);
         sc.getSlow(1000);
 
-        cf1.join();
+        loadFromDB.join();
         sw.stop();
         out.println(sw.getTotalTimeMillis());
     }
