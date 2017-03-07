@@ -7,7 +7,11 @@
 
     <groupId>pl.rn</groupId>
     <artifactId>ws01</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>jmh1</module>
+    </modules>
 
     <!--<parent>-->
         <!--<groupId>org.springframework.boot</groupId>-->
